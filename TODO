@@ -1,0 +1,127 @@
+### WaveNet: A generative model for raw audio.
+
+Others about this paper:
+Bai references this work when describing CNNs that outperform RNNs and get new SOTA
+
+### Neural machine translation in linear time
+
+
+Others about this paper:
+Bai references this work when describing CNNs that outperform RNNs and get new SOTA
+
+
+### Language modeling with gated convolutional networks
+
+Others about this paper:
+- Bai references this work when describing CNNs that outperform RNNs and get new SOTA
+- Bai compares model from this work to his TCN model: "Compared to the language modeling architecture of Dauphin et al. (2017), TCNs do not use gating mechanisms and have much longer memory."
+
+
+### A convolutional encoder model for neural machine translation
+
+Others about this paper:
+Bai references this work when describing CNNs that outperform RNNs and get new SOTA
+
+# Empirical evaluation of gated recurrent neural networks on sequence modeling
+
+# How to construct deep recurrent neural networks
+
+Others about this paper:
+-Bai wrote: "explored different ways to construct deep RNNs and evaluated the performance of different architectures on polyphonic music modeling, character-level language modeling, and word-level language modeling"
+
+# An empirical exploration of recurrent network architectures
+
+Others about this paper:
+- Bai wrote: "(...) searched through more than ten thousand different RNN architectures and evaluated their performance on various tasks. They concluded that if there were “architectures much better than the LSTM”, then they were “not trivial to find”"
+
+#  LSTM: A search space odyssey
+Others about this paper:
+-Bai wrote: "(...) benchmarked the performance of eight LSTM variants on speech recognition, handwriting recognition, and polyphonic music modeling. They also found that “none of the variants can improve upon the standard LSTM architecture significantly”."
+
+
+# Architectural complexity measures of recurrent neural networks
+
+Others about this paper:
+-Bai wrote: "(...) systematically analyzed the connecting architectures of RNNs and evaluated different architectures on characterlevel language modeling and on synthetic stress tests."
+
+# A convolutional neural network for modelling sentences
+
+# Convolutional neural networks for sentence classification
+# Character level convolutional networks for text classification
+# Very deep convolutional networks for text classification.
+# Effective use of word order for text categorization with convolutional neural networks
+# Supervised  Sequence  Labelling  with Recurrent Neural Networks
+# Backpropagation through time: What it does and how to do it
+# Generating text with recurrent neural network
+# Generating sequences with recurrent neural networks
+# Training  and analysing deep recurrent neural networks
+# Sequence to sequence learning with neural networks
+# Neural machine translation by jointly learning to align and translate
+# On the difficulty of training recurrent neural network
+# On the properties of neural machine translation: Encoder-decoder approaches
+# Hierarchical recurrent neural networks for long-term dependencies
+# Bidirectional recurrent neural networks
+# Learning precise timing with lstm recurrent networks.
+# A clockwork RNN
+# A simple way to initialize recurrent networks of rectified linear units
+# On multiplicative integration with recurrent neural networks
+# Skip RNN: Learning to skip state updates in recurrent neural networks
+
+# Empirical evaluation of gated recurrent neural networks on sequence modeling.
+Others about this paper:
+- Bai wrote: "(...) compared different types of recurrent units (LSTM vs. GRU) on the task of polyphonic music modeling"
+
+### On the state of the art of evaluation in neural language models
+
+Others about this paper:
+- Bai wrote: "(...) benchmarked LSTM-based architectures on word-level and character-level language modeling, and concluded that “LSTMs outperform the more recent models”."
+
+# Convolutional LSTM network: A machine learning approach for precipitation nowcasting.
+- Bai wrote: "(...) aimed to combine aspects of RNN and CNN architectures. (...) replaces the fully-connected layers in an LSTM with convolutional layers to allow for additional structure in the recurrent layers."
+
+# Quasi-recurrent neural networks
+
+Others about this paper:
+- Bai wrote: "(...) interleaves convolutional layers with simple recurrent layers"
+
+# Dilated recurrent neural networks (NIPS 2017)
+- Bai wrote: "(...) adds dilations to recurrent architectures"
+
+# Comparative study of CNN and RNN for natural language processing.
+Others about this paper:
+- Bai wrote: " (..)have reported a comparison of convolutional and recurrent networks for sentence-level and document-level classification tasks."
+
+#  Fully convolutional networks for semantic segmentation. (CVPR)
+
+- Bai wrote: "(...) the TCN uses a 1D fully-convolutional network (FCN) architecture (Long et al., 2015), where each hidden layer is the same length as the input layer, and zero padding of length (kernel size−1) is added to keep subsequent layers the same length as previous ones."
+
+# Phoneme recognition using time delay neural networks
+
+- Bai compared their TCN architecture to the one from this paper: "Note that this is essentially the same architecture as the
+time delay neural network proposed nearly 30 years ago" {Meaning the one from this paper} "(...) with the sole tweak of zero padding to ensure equal sizes of all layers."
+
+# Multi-scale context aggregation by dilated convolutions
+
+# Weight normalization: A simple reparameterization to accelerate training of deep neural networks.
+#  Unitary evolution recurrent neural networks
+
+# Improving neural language models with a continuous cache
+
+# Tunable efficient unitary neural networks (EUNN) and their application to RNNs
+
+Others about this paper:
+- Bai when comparing his TCN to EUNN: "the recently-proposed EURNN, which was highlighted to perform well on this task. While both TCN and EURNN perform well for sequence length T=500, the TCN has a clear advantage for T = 1000 and longer (in terms of both loss and rate of convergence)."
+
+# Modeling temporal dependencies in high-dimensional sequences:  Application to polyphonic music generation and transcription.
+
+# Diagonal RNNs in symbolic music modeling
+- HAVE TO READ! 
+
+# Modeling temporal dependencies in data using a DBN-LSTM
+
+- Bai when comparing to his TCN model pn Polyphonic music dataset: "Note however that other models such as the Deep Belief Net LSTM perform better still."
+
+### Using the output embedding to improve
+language models.
+
+### Regularizing RNNs by stabilizing activations
