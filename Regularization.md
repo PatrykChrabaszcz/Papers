@@ -75,7 +75,7 @@ From the paper:
 - "In addition, L2 decay can be used on the individual unit activations and on the difference in outputs of an RNN at different time steps; these strategies labeled as activation regularization (AR) and temporal activation regularization (TAR) respectively."
 - "In past work, pointer based attention models have been shown to be highly effective in improving language modeling "
 
-# Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks (Feb 2016) (NIPS 2016) Salimans et al. (OpenAI)
+### Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks (Feb 2016) (NIPS 2016) Salimans et al. (OpenAI)
 - Divides weight parameter into two parameters: magniture and direction.
 - Claims that this  improves the conditioning of the optimization problem.
 - Claims that this speeds up convergence of stochastic gradient descent.
