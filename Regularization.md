@@ -124,7 +124,7 @@ Questions:
 	
 Others about this paper:
 - Gal says: "In comparison, Zaremba’s dropout variant replaces zx with the time-dependent ztx which is sampled anew every time step."
-- Subakan calls it: "mild dropout"
+- Subakan uses it in their work on Diagonal RNNs.
 
 ### A Theoretically Grounded Application of Dropout in Recurrent Neural Networks (16 Dec 2015) (NIPS 2016)
 - Dropout as an approximate Bayesian Inference.
