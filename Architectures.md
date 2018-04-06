@@ -34,3 +34,17 @@ From the paper:
 - "The experimental results indicate that TCN models substantially outperform generic recurrent architectures such as LSTMs and GRUs."
 - "(...) showed that the “infinite memory” advantage of RNNs is largely absent in practice. TCNs exhibit longer memory than recurrent architectures with the same capacity."
 - "Due to the comparable clarity and simplicity of TCNs, we conclude that convolutional networks should be regarded as a natural starting point and a powerful toolkit for sequence modeling"
+
+### Diagonal RNNs in symbolic music modeling (Apr 2017)
+- Use diagonal matrices for recurrent connections.
+- When comparing different cells they sample 60 configurations and compare between top 6 (10%).
+- They have a github with the code https://github.com/ycemsubakan/diagonal_rnns
+- They report improvements when using diagonal RNNs on 3 out of 4 datasets.
+- Only used for symbolic music datasets.
+- Diagonal networks use fewer parameters.
+
+From this paper:
+- "The novelty is simple: We use diagonal recurrent matrices instead of full"
+- "we empirically show that in symbolic music modeling, using a diagonal recurrent matrix in RNNs results in significant improvement in terms of convergence speed and test likelihood."
+- "We see that using diagonal recurrent matrices results in an improvement in test likelihoods in almost all cases we have explored in this paper."
+
