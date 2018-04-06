@@ -125,3 +125,39 @@ Others about this paper:
 language models.
 
 ### Regularizing RNNs by stabilizing activations
+
+### Optimizing neural networks with kronecker-factored approximate curvature.
+
+### Scaling up natural gradient by sparsely factorizing the inverse fisher
+matri
+
+###  Natural neural networks
+
+### Batch normalization: Accelerating deep network training by reducing internal covariate shift
+
+Salisman says: " This reduces covariate shift of the neuron outputs and the authors suggest it also brings the Fisher matrix closer to the identity matrix."
+
+# Deep learning made easier by linear transformations in perceptrons.
+
+Salimans says: "(...) propose to transform the outputs of each neuron to have zero output and zero slope on average. They show that this transformation approximately diagonalizes the Fisher information matrix, thereby whitening the gradient, and that this leads to improved optimization performance."
+
+### Rank, trace-norm and max-norm. 
+
+Salisman says: "(...) but earlier work" {This work} "typically still performed optimization in the w-parameterization, only applying the normalization after each step of stochastic gradient descent. This is fundamentally different from our approach: we propose to explicitly reparameterize the model and to perform stochastic gradient descent in the new parameters v ,g directly.
+
+#Data-dependent initializations of convolutional neural network
+
+Salimans says that in this work they just like him (independently) proposed a way to initialize network weights by forcing initial minibatch activations to be normal distiributed.
+
+# All you need is a good init
+
+
+Salimans says that in this work they just like him (independently) proposed a way to initialize network weights by forcing initial minibatch activations to be normal distiributed.
+
+### Network in network
+### Deeply-supervised nets.
+
+### Efficient Object Localization Using Convolutional Networks
+
+Pytorch (Dropout2D doc) says: 
+- "As described (...), if adjacent pixels within feature maps are strongly correlated (as is normally the case in early convolution layers) then i.i.d. dropout will not regularize the activations and will otherwise just result in an effective learning rate decrease."
