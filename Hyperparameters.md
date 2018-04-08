@@ -10,4 +10,12 @@ From the paper:
 - "Here, we provide the first efficient and exact method for deriving functional ANOVA sensitivity indices for random forests."
 - "Optimally, algorithm designers would like to know how their hyperparameters affect performance in general, not just in the context of a single fixed instantiation of the remaining hyperparameters, but across all their instantiations."
 
-...
+TODO: Finish this paper
+
+
+### Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization (Mar 2016) Li et.al (University of California)
+https://arxiv.org/abs/1603.06560
+
+- Claims that Hyperband gives 5x, 30x speedups compared to Bayesian Optimization
+
+TODO:Finish this paper
