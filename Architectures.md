@@ -49,3 +49,41 @@ From this paper:
 - "we empirically show that in symbolic music modeling, using a diagonal recurrent matrix in RNNs results in significant improvement in terms of convergence speed and test likelihood."
 - "We see that using diagonal recurrent matrices results in an improvement in test likelihoods in almost all cases we have explored in this paper."
 
+### Dilated Recurrent Neural Networks (Oct 2017) (NIPS 2017) Chang, Zhang, Han et al. (IMB) 
+https://arxiv.org/abs/1710.02224
+- Publicly available tensorflow code https://github.com/code-terminator/DilatedRNN
+- Run experiments on: 
+- Claims that Dilated RNNs improve over base RNNs 
+- Claims that dilations make vanilla RNNs get state-of-the art
+- Should be beneficial for learning on a very long sequences
+
+
+From this paper:
+- "We introduce a new dilated recurrent skip connection as the key building block of the proposed architecture. These alleviate gradient problems and extend the range of temporal dependencies like conventional recurrent skip connections, but in the dilated version require fewer parameters and significantly enhance computational efficiency."
+- "We stack multiple dilated recurrent layers with hierarchical dilations to construct a DILATED RNN, which learns temporal dependencies of different scales at different layers."
+- "We present the mean recurrent length as a new neural memory capacity measure that reveals the performance difference between the previously developed recurrent skip-connections and the dilated version."
+- " We also verify the optimality of the exponentially increasing dilation distribution used in the proposed architecture."
+TODO: Finish this paper
+
+### TODO:
+Clockwork RNN 
+Phased LSTM
+Hierarchical Multiscale RNN
+
+
+### Learning to skim text
+
+- Chang about this paper: "proposed learning-
+based RNNs with the ability to jump (skim input text) after seeing a few timestamps worth of data;
+although the authors showed that the modified LSTM with jumping provides up to a six-fold speed
+increase, the efficiency gain is mainly in the testing phase."
+
+### Feudal networks for hierarchical reinforcement learning
+- Chang about this paper: "(...) can be viewed as a special case
+of our model, which contains only one dilated recurrent layer with fixed dilation. The main purpose
+of their model is to reduce the temporal resolution on time-sensitive tasks. Thus, the Dilated LSTM
+is not a general solution for modeling at multiple temporal resolutions"
+
+
+
+
