@@ -133,6 +133,10 @@ matri
 
 ###  Natural neural networks
 
+Others about this paper:
+- Laurent (in the context of Batch Normalization) about this work: "It  has  also  been  shown  that  convergence  can
+be improved even more by whitening intermediate representations instead of simply standardizing"
+
 ### Batch normalization: Accelerating deep network training by reducing internal covariate shift
 
 Salisman says: " This reduces covariate shift of the neuron outputs and the authors suggest it also brings the Fisher matrix closer to the identity matrix."
