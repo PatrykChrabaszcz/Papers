@@ -1,3 +1,10 @@
+### Long short-term memory
+- Main LSTM paper
+
+### Learning phrase representations using rnn encoder-decoder for statistical machine translation.
+- Main GRU paper
+
+
 ### An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling (Mar 2018) (Arxiv) Bai et al. (Carnegie Mellon University)
 - Claim that sequence modeling should be addressed using CNNs instead of RNNs.
 - Say that recent work showed that CNNs outperformed RNNs on audio synthesis, word-level language modeling, and machine translation.
