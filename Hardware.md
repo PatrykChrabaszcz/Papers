@@ -13,3 +13,5 @@ https://arxiv.org/pdf/1604.01946.pdf
 - They provide CUDA code https://github.com/parallel-forall/code-samples/blob/master/posts/rnn/LSTM.cu
 
 - "it is possible to reformulate a group of four matrix multiplications into a single matrix multiplication of four times the size"
+
+### Automatic differentiation in PyTorch (NIPS 2017) Paszke et al. (University of Warsaw, Facebook)
