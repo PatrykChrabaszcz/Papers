@@ -70,8 +70,16 @@ Others about it:
 Gal about this paper: "They reason that with dropout, the RNN’s dynamics change dramatically, and that dropout should be applied to the non-dynamic parts of the model – connections feeding from the hidden layer to the output layer"
 
 
-### Regularization of Neural Networks using DropConnect
-TODO
+### Regularization of Neural Networks using DropConnect (Feb 2013) (IMCL 2013) Wan et al. (New York University)
+- DropConnect is a generalization of Dropout
+- They have a different approach of making predictions during test time. They notice that neuron activation is a sum of Beroulli variables and that it can be approximated by a Gaussian, they find this approximation, draw samples from it and pass it through the activation. Then they take a mean of the activations. Based on figures seems it is important to use this sampling for DropConnect. For dropout there is no big difference. 
+- Provides the code http:///cs.nyu.edu/~wanli/dropc (Based on some old Deep Learning library)
+- Improves state of the art just a little bit.
+
+From this paper:
+- "DropConnect instead sets a randomly selected sub-set of weights within the network to zero."
+- "DropConnect is similar to Dropout as it introduces dynamic sparsity within the model, but differs in that the sparsity is on the weights W."
+- "A key component to successfully training with DropConnect is the selection of a different mask for each training example. Selecting a single mask for a subset of training examples, such as a mini-batch of 128 examples, does not regularize the model enough in practice."
 
 ### Where to Apply Dropout in Recurrent Neural Networks for Handwriting Recognition? (ICDAR 2015) Bluche et al.
 - Same people as "Dropout improves rnn for handwriting recognition".
@@ -131,7 +139,7 @@ Others about this paper:
 
 From the paper:
 - "(...) there have been some attempts to apply the dropout, a popular regularization scheme for the feed forward neural networks, to RNNs, but they do not perform as well as other regularization scheme such as weight noise injection."
-- "(...) rnnDrop, which drops out hidden nodes instead of some connections. That is, rnnDrop drops both the non-recurrent and recurrent connectionsthat are connected to the dropped nodes. More importantly,the dropout mask is randomly selected for each input sequenceand fixed throughout the sequence. "
+- "(...) rnnDrop, which drops out hidden nodes instead of some connections. That is, rnnDrop drops both the non-recurrent and recurrent connections that are connected to the dropped nodes. More importantly,the dropout mask is randomly selected for each input sequenceand fixed throughout the sequence. "
 - "Although DBLSTM networks trained with rnnDrop showed superior performances, it took much longer to train them."
 
 Others about this paper:
