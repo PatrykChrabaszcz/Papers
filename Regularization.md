@@ -1,3 +1,105 @@
+### Improving predictive  inference under  covariate  shift  by  weighting  the  log-likelihood function
+Others about it :
+Ioffe references this paper when he mentions "covariate shift"
+
+
+### Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift (Feb 2015) Ioffe et al. (Google)
+- Distribution of layer activations changes during training -> hard to train 
+- Without BN it is hard to train saturating nonliniearities 
+- Some notes about the paper https://gist.github.com/shagunsodhani/4441216a298df0fe6ab0
+- Covariate shift -> change in the input distribution to a learning system
+- It is well established that networks converge faster if the inputs have been whitened (ie zero mean, unit variances) and are uncorrelated and internal covariate shift leads to just the opposite.
+- BN normalizes layers outputs
+- With BN you can use larger learning rates and be less careful with initialization.
+- They achieve SOTA on ImageNet
+- If distribution of layer inputs does not change then network does not need to readjust to compensate for the change in the distribution of x. 
+- Prevents optimizer to get stuck in the saturated regime (for sigmoid and tahn activations)
+- Claims that it also acts as a regularizer.
+- Whitening is expensive since we would have to compute covariance matrices. 
+- Use additional parameters to assure that BN can represent identity function
+- In their experiments with BN they: increase the learning rate, remove dropout, reduce L2 regularization, accelerate learning rate decay, remove local response normalization, provide more shuffling to the training examples, distort images less.
+- It does not decorrelate the activations due to the computationally costly matrix inversion
+
+
+From the paper:
+- "When the input distribution to a learning system changes, it is said to experience covariate shift (Shimodaira, 2000)"
+- "If,  however,  we  could ensure that the distribution of nonlinearity inputs remains more stable as the network trains, then the optimizer would be less  likely  to  get stuck in  the  saturated  regime,  and the training would accelerate."
+- "We refer to the change in the distributions of internal nodes of a deep network, in the course of training, as Internal Covariate Shift." 
+- "by reducing the dependence of gradients on the scale of the parameters or of their initial values. This allows us to use much higher learning rates without the risk of divergence."
+- "Furthermore, batch  normalization  regularizes  the  model  and  reduces  the  need  for Dropout (Srivastava et al., 2014).  Finally, Batch Normalization makes it possible to use saturating nonlinearities by preventing the network from getting stuck in the saturated modes."
+- "Batch Normalization also makes training more resilient to the parameter scale. Normally, large learning rates may increase the scale of layer parameters, which then amplify the gradient during backpropagation and lead to the model explosion. However, with Batch Normalization, backpropagation through a layer is unaffected by the scale of its parameters"
+- "Whereas Dropout (Srivastava et al., 2014) is typically used to reduce overfitting, in a batch-normalized network we found that it can be either removed or reduced in strength."
+- "Interestingly, increasing the learning rate further (BN-x30) causes the model to train somewhat slower initially, but allows it to reach a higher final accuracy.
+
+### Recurrent Batch Normalization (Mar 2016) (ICLR 2017) Cooijmans et al. (Université de Montréal)
+https://arxiv.org/abs/1603.09025
+- They evaluate on sequence classification, language modeling and question answering.
+- They claim that batch-normalized LSTM consistently leads to faster convergence and improved generalization.
+- Their findings about recurrent BN are counter to the ones from: "Batch normalized RNNs"
+- RNN BN requires proper initialization
+- Claims that BN LSTM outperforms LSTM
+- RNNs inherently hard to train because of vanishing gradients
+- They apply batch normalization before nonlinearities (They also normalize Wh and Wx separately)
+- They do not apply batch normalization on the state c
+- They remove biases when they apply batch norm (those are irrelevant when we subtract the mean anyway)
+- Averaging statistics over time for batch normalization degrades performance, keep separate statistics per timestep. 
+- For longer sequences during test time we can repeat statistics from the maximum timestep seen during training
+- They initialize BN gamma to 0.1. They show that if it is initialized to 1 then derivatives of tahn are lower than 1 and this results in a vanishing gradients problem and it does not train that good. BN beta is initialized to 0 (standard approach)
+- For MNIST they initialize LSTM recurrent weight matrices with identity matrices, other matrices are initialized with orthogonal matrices. 
+- They add some gaussian noise because at the beginning all pixels in MNIST are black. They say it works better than making data dependet hiddent state.
+- Better than LSTM on pMNIST, equal on MNIST
+- They use gradient clipping of 1.0
+- On Penn TreeBank they use orthogonal weight matrix initialization for all matrices (little bit different than for MNIST)
+- For text datasets they train on sequences of length 100 (Penn BankTree), 180 (text-8)
+- "drastically improves training" on question answering dataset.
+- With attentive reader model they share statistics of BN (between timesteps) for forward connections but not for recurrent
+- They had to manipulate padding a little bit for varying length sequences in Attentive Reader model.
+- Very good results on QA dataset
+From the paper:
+- "We propose a reparameterization of LSTM that brings the benefits of batch normalization to recurrent neural networks. Whereas previous works only apply batch normalization to the input-to-hidden transformation of RNNs, we demonstrate that it is both possible and beneficial to batch-normalize the hidden-to-hidden transition, thereby reducing internal covariate shift between time steps."
+- "(...) we describe a reparameterization of LSTM (Section 3) that involves batch normalization and demonstrate that it is easier to optimize and generalizes better."
+- "(...) we (...) show that proper initialization of the batch normalization parameters is crucial to avoiding vanishing gradient."
+- "(...) show (...) that our LSTM reparameterization consistently outperforms the LSTM baseline across tasks, in terms of both time to convergence and performance."
+- "(...) we leverage batch normalization in both the input-to-hidden and the hidden-to-hidden transformations."
+- "In order to leave the LSTM dynamics intact and preserve the gradient flow through ct, we do not apply batch normalization in the cell update."
+- "However, we find that simply averaging statistics over time severely degrades performance."
+- "In our formulation, we normalize the recurrent term Wh ht−1 and the input term Wx xt separately. Normalizing these terms individually gives the model better control over the relative contribution of the terms using the γh and γx parameters."
+- "Consequently, we recommend using separate statistics for each timestep to preserve information of the initial transient phase in the activations."
+- "During training we estimate the statistics across the minibatch, independently for each timestep. At
+test time we use estimates obtained by averaging the minibatch estimates over the training set."
+- "(...) our  proposed  BN-LSTM  trains  faster  and  generalizes  better  on  a  variety  of  tasks  including language modeling and question-answering.  We have argued that proper initialization of the batch normalization parameters is crucial, and suggest that previous difficulties (Laurent et al., 2016; Amodei et al., 2015) were due in large part to improper initialization. Finally, we have shown our model to apply to complex settings involving variable-length data, bidirectionality and highly nonlinear attention mechanisms."
+
+
+### Batch normalized recurrent neural networks (Oct 2015) (ICASSP 2016) Laurent et al. (Universit́e de Montŕeal) 
+https://arxiv.org/abs/1510.01378
+
+- Claim that BN does not work when applied to recurrent connections.
+- Claim that with forward connection it gives faster convergence but does not give better generalization.
+- BN more challenging for RNNs but several variants seem to offer benefits. 
+- They show how BN can speed up the training.
+- They tried to apply BN to h_t before nonlinearity. Did not work, they decided to apply BN on W*x_t.  
+- Little bit different than deep speech, BN on input only after multiplication with Wx (Before nonlinearity)
+- For some applications they compute BN over 1 training sample (only over batch axis), for other they compute BN over batch and time axis.
+- Evaluate on Wall Street Journal (WSJ), Penn TreeBank (PTB)
+- Show that Batch Normalization netowrks train faster but also overfit more.
+- Some parts of the network were not normalized and because of that they could not use higher leraning rates
+
+From this paper:io
+- "In this paper, we show that applying batch normalization to the hidden-to-hidden transitions of our RNNs doesn’t help the training procedure." 
+- "(...) batch normalization is only applied after multiplication with the input-to-hidden weight matrices Wx·."
+
+
+Others about this paper:
+- Cooijmans says when he cites this paper : "(...) batch normalization (...) is proven to be difficult to apply in recurrent architectures"
+- Coijmans about this paper: " RNNs are deeper in the time direction, and as such batch normalization would be most beneficial when applied horizontally.   However, Laurent et al. (2016) hypothesized that applying batch normalization in this way hurts training because of exploding gradients due to repeated rescaling."
+- Coijmans about this: "We suspect that the previous difficulties with recurrent batch normalization reported in Laurent et al. (2016); Amodei et al. (2015) are largely due to improper initialization of the batch normalization parameters, and γ in particular."
+
+### Bridging  the  gaps  between  residual  learning,  recurrent  neural networks and visual cortex
+
+Others about this paper
+- Coijmans: "(...) smultaneously investigated batch normalization in recurrent neural networks, albeit only for very short sequences (10 steps)."
+
+
 ### Ivestigation of recurrent neural network architectures and learning methods for spoken language understanding.
 
 Others about it:
@@ -8,7 +110,10 @@ Others about it:
 Others about it:
 - Gal claims that here authors reason that noise added in the recurrent connections of an RNN leads to model instabilities, and they only add dropout to the decoding part.
 
+### Layer normalization
 
+Others about this paper:
+- Cooijmans: "(...) independently developed a variant of batch normalization that is also applicable to recurrent neural networks and delivers similar improvements as our method."
 
 ### Recurrent neural network regularization (8 Sep 2014) (ICLR 2015) Zaremba et al. 
 - Authors claim that it is the first approach for using dropout in RNNs (LSTM).
@@ -98,3 +203,6 @@ From this paper:
 - "Weight normalization can thus be viewed as a cheaper and less noisy approximation to batch normalization. Although exact equivalence does not usually hold for deeper architectures, we still find that our weight normalization method provides much of the speed-up of full batch normalization."
 
 
+# Deep speech 2: End-to-end speech recognition in english and mandarin
+
+- Coijmans about this: "We suspect that the previous difficulties with recurrent batch normalization reported in Laurent et al. (2016); Amodei et al. (2015) are largely due to improper initialization of the batch normalization parameters, and γ in particular."
