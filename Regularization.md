@@ -110,7 +110,34 @@ Others about it:
 Others about it:
 - Gal claims that here authors reason that noise added in the recurrent connections of an RNN leads to model instabilities, and they only add dropout to the decoding part.
 
-### Layer normalization
+### Layer normalization (Jul 2016) (Arxiv) Ba et al.(University of Toronto)
+- Batch Normalization is dependent on the mini batch size
+- BN/LN should be applied before non linearity 
+- In RNNs compute normalization statistics separately at each timestep 
+- Can be used with batch size 1
+- No problems like for recurrent BN when it has to store separate mean statistics for each timestep 
+- They discuss how weight/batch/layer normalizations relate to each other and what kind of invariances each brings.
+- They discuss Riemannian manifold
+- They test LN on 6 tasksk  image-sentence  ranking,  question-answering,  contextual  language  modelling,  generative
+modelling,  handwriting sequence generation and MNIST classification
+- On Microsoft COCO LN model requires only 60% time compared to the model without LN 
+- Train some models for a month
+- LN not really suited for CNNs yet
+
+From this paper:
+- "However, the effect of batch normalization is dependent on the mini-batch size and it is not obvious how to apply it to recurrent neural networks."
+- "Unlike batch normalization, layer normalization performs exactly the same computation at training and test times"
+- "It is also straightforward to apply to recurrent neural networks by computing the normalization statistics separately at each time step"
+- "Layer normalization is very effective at stabilizing the hidden state dynamics in recurrent networks.  Empirically, we show that layer normalization can substantially reduce the training time compared with previously published techniques."
+- "We show that layer normalization works well for RNNs and improves both the training time and the generalization performance of several existing RNN models."
+- "(...) “covariate shift” problem can be reduced by fixing the mean and the variance of the summed inputs within each layer."
+- "Unlike batch normalization, layer normaliztion does not impose any constraint on the size of a mini-batch and it can be used in the pure online regime with batch size 1"
+- "But when we apply batch normalization to an RNN in the obvious way, we need to to compute and store separate statistics for
+each time step in a sequence"
+- "(...) its normalization terms depend only on the summed inputs to a layer at the current time-step.  It also has only one set of gain and bias parameters shared over all time-steps"
+- "In a layer normalized RNN, the normalization terms make it invariant to re-scaling all of the summed inputs to a layer, which results in much more stable hidden-to-hidden dynamics"
+
+
 
 Others about this paper:
 - Cooijmans: "(...) independently developed a variant of batch normalization that is also applicable to recurrent neural networks and delivers similar improvements as our method."
