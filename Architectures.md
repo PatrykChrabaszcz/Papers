@@ -92,5 +92,23 @@ of their model is to reduce the temporal resolution on time-sensitive tasks. Thu
 is not a general solution for modeling at multiple temporal resolutions"
 
 
+### Deep Speech 2: End-to-End Speech Recognition in English and Mandarin (Dec 2015) (ICML 2016) Amodei et al. (Baidu)
+- they increase the training speed 7x compared to their previous approach
+- ASR system - Automatic Speech Recognition
+- They reduce error rates for English model by 43% compared to the previous system
+- They focus on the  model  architecture,  large  labeled  training datasets, and computational scale.
+- They train with CTC loss
+- English system trained on 12000 hours of speech.
+- They train one model on 8 or 16 GPUs. (They use synchronous SGD)
+- They put a lot of effort into making it parallelizable and fast 
+- On some benchmarks they are better than humans
+- Up to 7 GRU cells on top of the CNN cells
 
+
+
+- "We  show  that  an  end-to-end  deep  learning  approach  can  be  used  to  recognize either English or Mandarin Chinese speech."
+- "We explore architectures with up to 11 layers including many bidirectional recurrent layers and convolutional layers."
+- The RNN model is composed of several layers of hidden units.  The architectures we experiment with consist of one or more convolutional layers, followed by one or more recurrent layers, followed by one or more fully connected layers."
+- "In contrast " {to the Laurent's work}", we demonstrate that when applied to very deep networks of simple RNNs on large data sets, batch normalization
+substantially improves final generalization error while greatly accelerating training.
 
