@@ -112,3 +112,40 @@ is not a general solution for modeling at multiple temporal resolutions"
 - "In contrast " {to the Laurent's work}", we demonstrate that when applied to very deep networks of simple RNNs on large data sets, batch normalization
 substantially improves final generalization error while greatly accelerating training.
 
+
+### Deep Residual Learning for Image Recognition (Dec 2015) He et al. (CVPR 2016) (Microsoft)
+- Resnet allows for training much deeper networks.
+- First place on Imagenet classification 2015, with 3.57% top 5 error (ensemble).
+- Problem with convergence with many layers already addressed before by proper initialization and use of batch normalization.
+- With plain network more layers will give better performance up to some point, from that point adding more layers degrades performance on both 
+- Even though bigger models can act as shallow ones (If we use identity layers), they are still harder to optimize and at the end have lower train accuracy.
+- Use shortcut identity connections to skip layers and implement residual learning.
+- Imagenet model has 152 layers.
+- Perform linear projection if number of features does not match
+- They do not observe advantages if we only skip 1 layer (They test with blocks that have 2 or 3 layers in one res block)
+- They do skip the last layer, they do not skip the first layer
+
+- "We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions."
+- "Instead  of  hoping  each  few  stacked  layers  directly  fit  a desired  underlying  mapping,  we  explicitly  let  these  layers fit a residual mapping."
+- "Our extremely deep residual nets are easy to optimize, but the counterpart “plain” nets (that simply stack layers) exhibit higher training error when the depth increases."
+- "Our deep residual nets can easily enjoy accuracy gains from greatly increased depth, producing results substantially better than previous networks."
+
+TODO: Finish
+
+### Dilated Recurrent Neural Networks (Oct 2017) Chang et al. (NIPS 2017) (IBM)
+- Learning long sequences is complex, because: complex dependencies, vanishing/exploding gradients, efficient parallelization.
+- Uses dilated recurrent connections 
+- Good for tasks with very long dependencies 
+- They make the code available https://github.com/code-terminator/DilatedRNN
+- Analogous to the dilated CNN
+- It is cell independent
+- They use exponentialy increasing dilations 
+
+
+
+
+- "Learning with recurrent neural networks (RNNs) on long sequences is a notori-
+ously difficult task." 
+
+
+
