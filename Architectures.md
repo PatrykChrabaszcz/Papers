@@ -142,10 +142,76 @@ TODO: Finish
 - They use exponentialy increasing dilations 
 
 
-
-
 - "Learning with recurrent neural networks (RNNs) on long sequences is a notori-
 ously difficult task." 
+
+### Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling
+- Compare GRU LSTM and tanh RNN
+
+### On the Properties of Neural Machine Translation: Encoder-Decoder Approaches
+- Original GRU paper
+
+### Learning  Long-Term  Dependencies  with  Gradient Descent is Difficult (1994) Bengio et al. (University of Montreal)
+- RNN good for sequences however practical difficulties when relations span across long horizons
+- Show how standard gradient descent performance decreases as sequence size increases 
+- Propose some alternatives to standard gradient based optimization
+- Amount of time information is kept in RNN is not fixed, it depends on RNN weights and on the input data
+- Standard training is backpropagation through time
+- Forward propagation algorithms (More computationaly expensive and local in time) can be applied online and produce a partial gradient after each time step 
+- Early experiments with RNN indicate that parameters settle in sub optimal regions where they only capture short dependencies.
+- They have some theoretical results that either system is resistant to noise in the input or is efficiently trained by gradient descent.
+- Toy problem where only first L values determine sequence class. Sequences arbitrarly long. Other values irrelavant and should be ignored.
+
+From this paper: "Theanalysis  shows  thatwhentryingtosatisfyconditions1)and2)above,  the  magnitudeofthe  derivativeofthe  stateofa  dynamical  system  at  timetwith  respectto  the  stateattime0decreases  exponentially  astincreases. "
+
+
+TODO: Finish
+
+### On the difficulty of training recurrent neural networks
+- Analyze how singular values relate to vanishing/exploding gradient problem.
+- For some artificial problems that show that there are high walls in the loss surface that might cause high gradients and big jumps during optimization
+
+From the paper:
+- "There are two widely known issues with prop-erly  training  recurrent  neural  networks,  thevanishingand  theexplodinggradient  prob-lems  detailed  in  Bengioet  al."
+- "We propose a gradient norm
+clipping strategy to deal with exploding gra-
+dients and a soft constraint for the vanishing
+gradients  problem.   We  validate  empirically
+our hypothesis and proposed solutions in the
+experimental section."
+- "While  in  principle  the  recurrent  network  is  a  simpleand  powerful  model,  in  practice,  it  is  hard  to  trainproperly.  Among the main reasons why this model isso unwieldy are thevanishing  gradientandexplodinggradientproblems described in Bengioet al.(1994)."
+- Introduced in Bengioet al.(1994), theexploding gradientsproblem refers to the large increase in the normof the gradient during training.  Such events are due tothe explosion of the long term components, which can grow exponentially more than short term ones
+- " The
+vanishing gradients
+problem refers to the opposite be-
+haviour, when long term components go exponentially
+fast to norm 0, making it impossible for the model to
+learn correlation between temporally distant events."
+- "Using an L1 or L2 penalty on the recurrent weights canhelp with exploding gradients.  Assuming weights areinitialized to small values, the largest singular valueλ1ofWrecis probably smaller than 1.  The L1/L2 termcan ensure that during trainingλ1stays smaller than1,  and  in  this  regime  gradients  can  not  explode. This  approach  limits  the  model  to  singlepoint  attractor  at  the  origin,  where  any  informationinserted in the model dies out exponentially fast.  Thisprevents  the  model  to  learn  generator  networks,  norcan it exhibit long term memory traces"
+- "one  mechanism  to  deal
+with the exploding gradient problem is to rescale their
+norm whenever it goes over a threshold"
+- "One  good
+heuristic for setting this threshold is to look at statis-
+tics on the average norm over a sufficiently large num-
+ber  of  updates.   In  our  experience  values  from  half
+to ten times this average can still yield convergence,
+though convergence speed can be affected."
+- " We  put  forward  a  hypothesis  stat-
+ing  that  when  gradients  explode  we  have  a  cliff-like
+structure in the error surface and devise a simple so-
+lution based on this hypothesis, clipping the norm of
+the exploded gradients"
+
+
+
+
+### Finding structure in time
+
+### Learning  representations  by  back-propagating errors.
+
+### Generalization of backpropagation with application to a recurrent gas market model.
+
 
 
 
