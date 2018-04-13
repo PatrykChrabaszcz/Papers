@@ -213,5 +213,27 @@ the exploded gradients"
 ### Generalization of backpropagation with application to a recurrent gas market model.
 
 
+### On the state of the art of evaluation in neural language models (Jul 2017) Melis et al. (Deep Mind)
+- Lot of SOTA but different evaluation procedures
+- They reevaluate experiments with different architectures and regularizations
+- Standard LSTM architectures, when properly regularised, outperform more recent models
+- They discuss the problem that it would be better to properly evaluate models, describe their sensitivity to hyperparameters etc.. But this is also costly so we need to agree on some standardized procedures. 
+- They test NAS, LSTM and Recurrent Highway Networks
+- They use variational dropout from Gal or recurrent dropout from 
+- They use datasets:  Penn Treebank, Wikitext-2 ,  Enwik8
+- batch size of 64, truncated backpropagation with 35 time steps, forward states from previous minibatch
+- start with zero state
+- They use Adam with beta 1 set to 0 (More like RMSProp)
+- Some experiments show that MC dropout would bring very small improvements (100x more costly) so they dont use it
+- They use Google Vizier for HP Tuning
+- They optimize: learning rate, input embedding ratio, input dropout,state dropout,output dropout,weight decay
+- intra-layer dropout additionaly for RNNs.
+- They parameterize over number of parameters, hidden size is derived from it
+- Their experiments see no difference between Gal and Semeniuta dropouts.
+- They check how the tuner overfits (Retrain with the same HP setting)
+
+From the paper:
+- "Even with this small set, thousands of evaluations are required to reach convergence"
+
 
 
