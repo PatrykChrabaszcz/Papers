@@ -236,4 +236,94 @@ From the paper:
 - "Even with this small set, thousands of evaluations are required to reach convergence"
 
 
+### Sequence to sequence learning with neural networks (Sep 2014) (NIPS 2014) Sutskever et al. Google
+- DNNs could not be used to map sequences to squences before
+- They use datasets:  WMT’14 English to French
+- Say their approach is related to "Recurrent continuous translation models."
+- Use simple left to right beam search decoder
+- They improve over SMT baseline
+- They can handle long sequences because they reverse the order of input sequence (This was one of the key technical contributions)
+- Resulting model is quite invariant to word order and active/passive voice
+- Simple technique to do sequence to sequence modeling. Map input sequence into fixed vector and then decode that vector
+- Last hidden state is used as this fixed vector representation
+- Then the next LSTM is conditioned on that hidden state
+- Different LSTMs for encoding and decoding (Possible to train on different language pairs)
+- Find that Deep LSTMs work better so they use 4 layers
+- If we want to translate a, b, c into A, B, C then its better to feed the input data as c, b, a and keep outputs as A, B, C. They have some hypthesis why it would work but important thing is that it works in practice
+- Setup : 4layer LSTM 1000 neurons, 1000 dim word embedding, 160 000 input vocabulary, 80 000 output vocabulary
+- They use naive softmax on the output
+- SGD with learning rate 0.7 no momentum, halving every half epoch after first 5 epochs
+- They have gradient norm clipping rule
+- They batch sentences to get similar length sentences in the same batch (2x speed up compared to the naive approach)
+- Parallelize implementation over 8 GPUs and train for 10 days
+- They visualize sentence vectors in 2D using PCA 
 
+
+- "We were able to do well on long sentences because we reversed the order of words in the source sentence but not the arget sentences in the training and test set. By doing so, we introduced many short term dependencies that made the optimization problem much simpler (see sec. 2 and 3.3).  As a result, SGD could learn LSTMs that had no trouble with long sentences.  The simple trick of reversing the words in the source sentence is one of the key technical contributions of this work."
+- "By reversing the words in the source sentence, the average distance between corresponding words in the source and target language is unchanged.  However, the first few words in the source language are now very close to the first few words in the target language, so the problem’s minimal time lag is greatly reduced.  Thus, backpropagation has an easier time “ establishing communication” between the source sentence and the target sentence, which in turn results in substantially improved overall performance.
+- "LSTMs trained on reversed source sentences did much better on long sentences than LSTMs  trained on the raw source sentences (see sec. 3.7), which suggests that reversing the input sentencesresults in LSTMs with better memory utilization."
+- "Most importantly, we demonstrated that a simple, straightforward and a relatively unoptimized approach can outperform an SMT system, so further work will likely lead to even greater translation accuracies. These results suggest that our approach will likely do well on other challenging sequence to sequence problems."
+
+
+### Recurrent continuous translation models.
+
+Sutskever about this: "(...) were the first to map the entire input sentence to vector"
+Sutskever about this: "Our work is closely related to Kalchbrenner and Blunsom [18], who were the first to map the input sentence into a vector and then back to a sentence, although they map sentences to vectors using convolutional neural networks, which lose the ordering of the words"
+
+
+
+### Learning phrase representations using RNN encoder-decoder for statistical machine translation
+Sutskever about this: "was used only for rescoring hypotheses produced by a phrase-based system"
+Sutskever about this: "Used an LSTM-like RNN architecture to map sentences into vectors and back, although their
+primary focus was on integrating their neural network into an SMT system."
+
+### Overcoming  the curse of sentence length for neural machine translation using automatic segmentation.
+
+Sutskever says about their observations compared to the observations in the paper: "Surprisingly, the LSTM did not suffer on very long sentences, despite the recent experience of other researchers with related architecture"
+
+Sutskever about this:  "Likewise, Pouget-Abadie et al. [26] attempted to address the memory problem of Cho et al. [5] by translating pieces of the source sentence in way that produces smooth translations, which is similar to a phrase-based approach. We suspect that they could achieve similar improvements by simply training their networks on reversed source sentences."
+
+
+### Generating sequences with recurrent neural networks
+
+Sutskever about this : introduced a novel differentiable attention mechanism that allows neural networks to focus on different parts of their input
+
+
+### Neural machine translation by jointly learning to align and translate.
+
+Sutskever about this: "an elegant variant of this idea" {Meaning attention mechanism} "was successfully applied to machine translation"
+Sutskever about this: "Bahdanau et al. [2] also attempted direct translations with a neural network that used an attention mechanism to overcome the poor performance on long sentences experienced by Cho et al. [5] and achieved encouraging results"
+
+### Connectionist temporal classification: labelling unsegmented sequence data with recurrent neural networks.
+
+Sutskever about this: " The Connectionist Sequence Classification is another popular technique for mapping sequences to sequences with neural networks, but it assumes a monotonic alignment between the inputs and the outputs"
+
+
+### Recurrent neural network based language model.
+
+Sutskever says: "(...) the simplest and most effective way  of applying an  RNN-Language Model (..) to an MT task is by rescoring the n-best lists of a strong MT baseline, which reliably improves translation quality."
+
+### Joint language and translation modeling with recurrent neural networks
+
+Sutskever says: "More recently, researchers have begun to look into ways of in
+cluding information about the source
+language into the NNLM. Examples of this work include Auli et
+al. [1], who combine an NNLM
+with a topic model of the input sentence, which improves resc
+oring performance"
+
+
+### Fast and robust neural network joint models for statistical machine translation
+
+Sutskever says: "(...) followed a similar approach, " {Meaning similar to the paper "Joint language and translation modeling with recurrent neural networks"} "but they incorporated their NNLM into the decoder of an MT system
+and used the decoder’s alignment information to provide the
+NNLM with the most useful words in
+the input sentence.  Their approach was highly successful an
+d it achieved large improvements over
+their baseline."
+
+
+### Multilingual distributed representations without word alignment.
+
+
+Sutskever about this: "End-to-end training is also the focus of Hermann et al. [12], whose model represents the inputs and outputs by feedforward networks, and map them to similar points in space. However, their approach cannot generate translations directly: to get a translation, they need to do a look up for closest vector in the pre-computed database of sentences, or to rescore a sentence."
