@@ -1,3 +1,9 @@
+## Language Models
+
+### LSTM neural networks for language modeling.
+### Learning representations by back-propagating errors.
+### Recurrent neural network based language model.
+
 ## Speech Recognition
 ### Deep neural networks for acoustic modeling in speech recognition:  The shared views of four research groups
 
@@ -9,7 +15,7 @@
 ### Sequence to sequence learning with neural networks
 ### Neural machine translation by jointly learning to align and translate
 ###  Google’s neural machine translation system:  Bridging the gap between human and machine translation
-
+### Recurrent continuous translation models
 
 
 ## Hyperparameter Optimization
