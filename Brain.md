@@ -4,7 +4,7 @@
 ### Deep learning with convolutional neural networks for EEG decoding and visualization
 
 ### Deep learning with convolutional neural networks for decoding and visualization of EEG pathology (Aug 2017) (Arxiv) Schirrmeister et al. (University of Freiburg)
-https://arxiv.org/abs/1703.05051
+https://arxiv.org/abs/1708.08012
 - Apply Convnets to Temple University Hospital EEG Abnormal Corpus dataset.
 - Use two basic architectures: shallow and deep.
 - Get 85% accuracy compared to the previous 79%.
